@@ -13,7 +13,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     final isDark = themeProvider.isDarkMode;
 
     return AppBar(
-      title: const Text('Moodle App'),
+      title: const Text(
+        '🎓 Curso App',
+        style: TextStyle(color: AppColors.textDark),
+      ),
       actions: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
