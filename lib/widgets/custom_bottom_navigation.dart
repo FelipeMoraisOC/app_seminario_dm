@@ -16,10 +16,10 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
     Curso(
       nome: 'Curso FLutter',
       descricao: 'Aprenda Flutter do zero!',
-      dataInicio: DateTime.now(),
+      dataInicio: DateTime.parse('2025-06-01'),
       email: 'flutter@email.com',
       senha: 'utfpr',
-      imagem: 'assets/images/flutter.png',
+      imagem: 'assets/images/curso_flutter.jpg',
       quantidadeAlunos: 40,
     ),
     Curso(
@@ -28,8 +28,16 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
       dataInicio: DateTime.now(),
       email: 'dart@email.com',
       senha: 'utfpr',
-      imagem: 'assets/images/dart.png',
+      imagem: 'assets/images/curso_dart.jpg',
       quantidadeAlunos: 30,
+    ),
+    Curso(
+      nome: 'Curso Gestão de Projetos',
+      descricao: 'Aprenda Gestão de Projetos!',
+      dataInicio: DateTime.now(),
+      email: 'gestao@email.com',
+      senha: 'utfpr',
+      quantidadeAlunos: 44,
     ),
   ];
 
@@ -59,7 +67,7 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.note_add_outlined),
-            label: 'Adicionar',
+            label: 'Adicionar Curso',
           ),
         ],
       ),

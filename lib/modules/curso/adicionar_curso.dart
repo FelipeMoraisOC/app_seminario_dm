@@ -1,4 +1,5 @@
 import 'package:app_seminario/model/curso.dart';
+import 'package:app_seminario/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -139,23 +140,9 @@ class _AdicionarCursoState extends State<AdicionarCurso> {
               const SizedBox(height: 20),
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
+                child: CustomElevatedButton(
                   onPressed: _salvar,
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    elevation: 2,
-                  ),
-                  child: Text(
-                    'Salvar',
-                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+                  label: 'Salvar',
                 ),
               ),
             ],
