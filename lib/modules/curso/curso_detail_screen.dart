@@ -30,65 +30,65 @@ class CursoDetailScreen extends StatelessWidget {
                 ),
               ),
 
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      curso.nome,
-                      style: Theme.of(context).textTheme.headlineSmall,
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      curso.descricao,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    const SizedBox(height: 20),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        curso.nome,
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        curso.descricao,
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
+                      const SizedBox(height: 20),
 
-                    // Quantidade de alunos e data lado a lado
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Alunos: ${curso.quantidadeAlunos}',
-                          style: Theme.of(context).textTheme.bodyLarge,
-                        ),
-                        Text(
-                          'Início: ${_formatarData(curso.dataInicio)}',
-                          style: Theme.of(context).textTheme.bodyLarge,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 24),
-
-                    // Botões
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        SizedBox(
-                          width: double.infinity,
-                          child: CustomElevatedButton(
-                            label: 'Editar',
-                            onPressed: () {
-                              // Lógica de edição aqui
-                            },
+                      // Quantidade de alunos e data lado a lado
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Alunos: ${curso.quantidadeAlunos}',
+                            style: Theme.of(context).textTheme.bodyLarge,
                           ),
-                        ),
-                        const SizedBox(height: 20),
-                        SizedBox(
-                          width: double.infinity,
-                          child: CustomElevatedButton(
-                            label: 'Excluir',
-                            onPressed: () {
-                              // Lógica de exclusão aqui
-                            },
-                            color: Colors.red,
+                          Text(
+                            'Início: ${_formatarData(curso.dataInicio)}',
+                            style: Theme.of(context).textTheme.bodyLarge,
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                      const Spacer(),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          SizedBox(
+                            width: double.infinity,
+                            child: CustomElevatedButton(
+                              label: 'Editar',
+                              onPressed: () {
+                                // Lógica de edição aqui
+                              },
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          SizedBox(
+                            width: double.infinity,
+                            child: CustomElevatedButton(
+                              label: 'Excluir',
+                              onPressed: () {
+                                // Lógica de exclusão aqui
+                              },
+                              color: Colors.red,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
