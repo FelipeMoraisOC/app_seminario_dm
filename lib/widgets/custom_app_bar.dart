@@ -13,18 +13,24 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     final isDark = themeProvider.isDarkMode;
 
     return AppBar(
-      title: const Text(
-        '🎓 Curso App',
-        style: TextStyle(color: AppColors.textDark),
-      ),
+      title: Text('🎓 Curso App'),
       actions: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               'Light\nTheme',
               textAlign: TextAlign.right,
-              style: TextStyle(fontSize: 12, color: AppColors.textDark),
+              style:
+                  themeProvider.isDarkMode
+                      ? const TextStyle(
+                        fontSize: 12,
+                        color: AppColors.textLight,
+                      )
+                      : const TextStyle(
+                        fontSize: 12,
+                        color: AppColors.textDark,
+                      ),
             ),
             const SizedBox(width: 8),
             CupertinoSwitch(
@@ -38,10 +44,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               thumbColor: AppColors.textLight,
             ),
             const SizedBox(width: 8),
-            const Text(
+            Text(
               'Dark\nMode',
               textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 12, color: AppColors.textLight),
+              style:
+                  themeProvider.isDarkMode
+                      ? const TextStyle(fontSize: 12, color: AppColors.textDark)
+                      : const TextStyle(
+                        fontSize: 12,
+                        color: AppColors.textLight,
+                      ),
             ),
           ],
         ),

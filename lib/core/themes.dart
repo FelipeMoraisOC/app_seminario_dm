@@ -29,6 +29,11 @@ class AppTheme {
         foregroundColor: AppColors.textDark,
       ),
     ),
+    cardTheme: CardTheme(
+      color: AppColors.cardLight,
+      shadowColor: AppColors.backgroundDark,
+      elevation: 4,
+    ),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -45,9 +50,9 @@ class AppTheme {
     ),
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.primary,
-      iconTheme: IconThemeData(color: AppColors.textLight),
+      iconTheme: IconThemeData(color: AppColors.textDark),
       titleTextStyle: TextStyle(
-        color: AppColors.textLight,
+        color: AppColors.textDark,
         fontSize: 20,
         fontWeight: FontWeight.bold,
       ),
@@ -55,8 +60,13 @@ class AppTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.buttonDark,
-        foregroundColor: AppColors.textLight,
+        foregroundColor: AppColors.textDark,
       ),
+    ),
+    cardTheme: CardTheme(
+      color: AppColors.cardDark,
+      shadowColor: AppColors.backgroundDark,
+      elevation: 4,
     ),
   );
 }
