@@ -13,8 +13,24 @@ class CustomBottomNavigation extends StatefulWidget {
 class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
   int _indexAtual = 0;
   final List<Curso> _cursos = [
-    Curso(nome: 'Curso FLutter', descricao: 'Aprenda Flutter do zero!'),
-    Curso(nome: 'Curso Dart', descricao: 'Aprenda Dart do zero!'),
+    Curso(
+      nome: 'Curso FLutter',
+      descricao: 'Aprenda Flutter do zero!',
+      dataInicio: DateTime.now(),
+      email: 'flutter@email.com',
+      senha: 'utfpr',
+      imagem: 'assets/images/flutter.png',
+      quantidadeAlunos: 40,
+    ),
+    Curso(
+      nome: 'Curso Dart',
+      descricao: 'Aprenda Dart do zero!',
+      dataInicio: DateTime.now(),
+      email: 'dart@email.com',
+      senha: 'utfpr',
+      imagem: 'assets/images/dart.png',
+      quantidadeAlunos: 30,
+    ),
   ];
 
   void _adicionarCurso(Curso curso) {

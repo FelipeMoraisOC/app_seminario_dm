@@ -34,6 +34,24 @@ class AppTheme {
       shadowColor: AppColors.backgroundDark,
       elevation: 4,
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: AppColors.cardLight,
+      labelStyle: TextStyle(color: AppColors.textLight),
+      hintStyle: TextStyle(color: AppColors.textLight),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.0),
+        borderSide: BorderSide.none,
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.0),
+        borderSide: BorderSide.none,
+      ),
+    ),
+    textSelectionTheme: const TextSelectionThemeData(
+      cursorColor:
+          AppColors.backgroundDark, // Cor do cursor// Cor do "pino" de seleção
+    ),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -67,6 +85,24 @@ class AppTheme {
       color: AppColors.cardDark,
       shadowColor: AppColors.backgroundDark,
       elevation: 4,
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: AppColors.cardDark,
+      labelStyle: TextStyle(color: AppColors.textDark),
+      hintStyle: TextStyle(color: AppColors.textDark),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.0),
+        borderSide: BorderSide.none,
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.0),
+        borderSide: BorderSide.none,
+      ),
+    ),
+    textSelectionTheme: const TextSelectionThemeData(
+      cursorColor:
+          AppColors.textDark, // Cor do cursor// Cor do "pino" de seleção
     ),
   );
 }

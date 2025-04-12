@@ -13,7 +13,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     final isDark = themeProvider.isDarkMode;
 
     return AppBar(
-      title: Text('🎓 Curso App'),
+      title: Text(
+        '🎓App Cursos',
+        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+          color: AppColors.textDark,
+          fontWeight: FontWeight.w700,
+        ),
+      ),
       actions: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

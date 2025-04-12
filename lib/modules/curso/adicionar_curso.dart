@@ -1,5 +1,7 @@
 import 'package:app_seminario/model/curso.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 
 class AdicionarCurso extends StatefulWidget {
   final Function(Curso) onSalvar;
@@ -14,12 +16,22 @@ class _AdicionarCursoState extends State<AdicionarCurso> {
   final _formKey = GlobalKey<FormState>();
   final nomeController = TextEditingController();
   final descricaoController = TextEditingController();
+  final emailController = TextEditingController();
+  final senhaController = TextEditingController();
+  final dataInicioController = TextEditingController();
+  final quantidadeAlunosController = TextEditingController();
+
+  DateTime? _dataInicioReal;
 
   void _salvar() {
     if (_formKey.currentState!.validate()) {
       final novoCurso = Curso(
         nome: nomeController.text.trim(),
         descricao: descricaoController.text.trim(),
+        email: emailController.text.trim(),
+        senha: senhaController.text.trim(),
+        quantidadeAlunos: int.parse(quantidadeAlunosController.text.trim()),
+        dataInicio: _dataInicioReal!,
       );
       widget.onSalvar(novoCurso);
     }
@@ -28,7 +40,7 @@ class _AdicionarCursoState extends State<AdicionarCurso> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Adicionar Curso')),
+      appBar: AppBar(title: const Text('Adicionar novo curso')),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Form(
@@ -41,20 +53,111 @@ class _AdicionarCursoState extends State<AdicionarCurso> {
                 validator:
                     (value) =>
                         value == null || value.isEmpty
-                            ? 'Digite um nome'
+                            ? '* Digite um nome'
                             : null,
               ),
+              const SizedBox(height: 20),
               TextFormField(
+                keyboardType: TextInputType.multiline,
+                minLines: 1,
+                maxLines: null,
                 controller: descricaoController,
                 decoration: const InputDecoration(labelText: 'Descrição'),
                 validator:
                     (value) =>
-                        value != null && value.length < 5
-                            ? 'Descrição muito curta'
+                        value == null || value.isEmpty
+                            ? 'Digite uma descrição para o curso'
                             : null,
               ),
               const SizedBox(height: 20),
-              ElevatedButton(onPressed: _salvar, child: const Text('Salvar')),
+              TextFormField(
+                controller: quantidadeAlunosController,
+                decoration: const InputDecoration(
+                  labelText: 'Quantidade de Alunos:',
+                ),
+                keyboardType: TextInputType.number,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                validator:
+                    (value) =>
+                        value == null || value.isEmpty
+                            ? 'Informe a quantidade de alunos'
+                            : null,
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                controller: senhaController,
+                decoration: const InputDecoration(labelText: 'Senha'),
+                obscureText: true,
+                validator:
+                    (value) =>
+                        value == null || value.isEmpty
+                            ? 'Digite uma senha'
+                            : value.length < 6
+                            ? 'Senha muito curta'
+                            : null,
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Confirme a senha',
+                ),
+                obscureText: true,
+                validator:
+                    (value) =>
+                        value != senhaController.text
+                            ? 'As senhas não coincidem'
+                            : null,
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                controller: dataInicioController,
+                decoration: const InputDecoration(
+                  labelText: 'Data de Início',
+                  hintText: 'dd/mm/aaaa',
+                ),
+                readOnly: true,
+                onTap: () async {
+                  final DateTime? pickedDate = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2100),
+                  );
+                  if (pickedDate != null) {
+                    setState(() {
+                      _dataInicioReal = pickedDate;
+                      dataInicioController.text = DateFormat(
+                        'dd/MM/yyyy',
+                      ).format(pickedDate);
+                    });
+                  }
+                },
+                validator:
+                    (value) =>
+                        _dataInicioReal == null ? 'Selecione uma data' : null,
+              ),
+              const SizedBox(height: 20),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: _salvar,
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    elevation: 2,
+                  ),
+                  child: Text(
+                    'Salvar',
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
