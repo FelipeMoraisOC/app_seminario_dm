@@ -11,9 +11,27 @@ class CursoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => CursoDetailScreen(curso: curso)),
+        Navigator.of(context).push(
+          PageRouteBuilder(
+            transitionDuration: const Duration(milliseconds: 200),
+            pageBuilder: (_, animation, __) => CursoDetailScreen(curso: curso),
+            transitionsBuilder: (_, animation, __, child) {
+              final offsetAnimation = Tween<Offset>(
+                begin: const Offset(1.0, 0.0),
+                end: Offset.zero,
+              ).animate(animation);
+
+              final fadeAnimation = Tween<double>(
+                begin: 0.0,
+                end: 1.0,
+              ).animate(animation);
+
+              return SlideTransition(
+                position: offsetAnimation,
+                child: FadeTransition(opacity: fadeAnimation, child: child),
+              );
+            },
+          ),
         );
       },
       child: Card(

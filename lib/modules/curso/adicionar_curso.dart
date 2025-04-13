@@ -42,110 +42,114 @@ class _AdicionarCursoState extends State<AdicionarCurso> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Adicionar novo curso')),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              TextFormField(
-                controller: nomeController,
-                decoration: const InputDecoration(labelText: 'Nome do curso'),
-                validator:
-                    (value) =>
-                        value == null || value.isEmpty
-                            ? '* Digite um nome'
-                            : null,
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                keyboardType: TextInputType.multiline,
-                minLines: 1,
-                maxLines: null,
-                controller: descricaoController,
-                decoration: const InputDecoration(labelText: 'Descrição'),
-                validator:
-                    (value) =>
-                        value == null || value.isEmpty
-                            ? 'Digite uma descrição para o curso'
-                            : null,
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: quantidadeAlunosController,
-                decoration: const InputDecoration(
-                  labelText: 'Quantidade de Alunos:',
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                TextFormField(
+                  controller: nomeController,
+                  decoration: const InputDecoration(labelText: 'Nome do curso'),
+                  validator:
+                      (value) =>
+                          value == null || value.isEmpty
+                              ? '* Digite um nome'
+                              : null,
                 ),
-                keyboardType: TextInputType.number,
-                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                validator:
-                    (value) =>
-                        value == null || value.isEmpty
-                            ? 'Informe a quantidade de alunos'
-                            : null,
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: senhaController,
-                decoration: const InputDecoration(labelText: 'Senha'),
-                obscureText: true,
-                validator:
-                    (value) =>
-                        value == null || value.isEmpty
-                            ? 'Digite uma senha'
-                            : value.length < 6
-                            ? 'Senha muito curta'
-                            : null,
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Confirme a senha',
+                const SizedBox(height: 20),
+                TextFormField(
+                  keyboardType: TextInputType.multiline,
+                  minLines: 1,
+                  maxLines: null,
+                  controller: descricaoController,
+                  decoration: const InputDecoration(labelText: 'Descrição'),
+                  validator:
+                      (value) =>
+                          value == null || value.isEmpty
+                              ? '* Digite uma descrição para o curso'
+                              : null,
                 ),
-                obscureText: true,
-                validator:
-                    (value) =>
-                        value != senhaController.text
-                            ? 'As senhas não coincidem'
-                            : null,
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: dataInicioController,
-                decoration: const InputDecoration(
-                  labelText: 'Data de Início',
-                  hintText: 'dd/mm/aaaa',
+                const SizedBox(height: 20),
+                TextFormField(
+                  controller: quantidadeAlunosController,
+                  decoration: const InputDecoration(
+                    labelText: 'Quantidade de Alunos:',
+                  ),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  validator:
+                      (value) =>
+                          value == null || value.isEmpty
+                              ? '* Informe a quantidade de alunos'
+                              : null,
                 ),
-                readOnly: true,
-                onTap: () async {
-                  final DateTime? pickedDate = await showDatePicker(
-                    context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime(2000),
-                    lastDate: DateTime(2100),
-                  );
-                  if (pickedDate != null) {
-                    setState(() {
-                      _dataInicioReal = pickedDate;
-                      dataInicioController.text = DateFormat(
-                        'dd/MM/yyyy',
-                      ).format(pickedDate);
-                    });
-                  }
-                },
-                validator:
-                    (value) =>
-                        _dataInicioReal == null ? 'Selecione uma data' : null,
-              ),
-              const SizedBox(height: 20),
-              SizedBox(
-                width: double.infinity,
-                child: CustomElevatedButton(
-                  onPressed: _salvar,
-                  label: 'Salvar',
+                const SizedBox(height: 20),
+                TextFormField(
+                  controller: senhaController,
+                  decoration: const InputDecoration(labelText: 'Senha'),
+                  obscureText: true,
+                  validator:
+                      (value) =>
+                          value == null || value.isEmpty
+                              ? '* Digite uma senha'
+                              : value.length < 6
+                              ? '* Senha muito curta'
+                              : null,
                 ),
-              ),
-            ],
+                const SizedBox(height: 20),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'Confirme a senha',
+                  ),
+                  obscureText: true,
+                  validator:
+                      (value) =>
+                          value != senhaController.text
+                              ? '* As senhas não coincidem'
+                              : null,
+                ),
+                const SizedBox(height: 20),
+                TextFormField(
+                  controller: dataInicioController,
+                  decoration: const InputDecoration(
+                    labelText: 'Data de Início',
+                    hintText: 'dd/mm/aaaa',
+                  ),
+                  readOnly: true,
+                  onTap: () async {
+                    final DateTime? pickedDate = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2100),
+                    );
+                    if (pickedDate != null) {
+                      setState(() {
+                        _dataInicioReal = pickedDate;
+                        dataInicioController.text = DateFormat(
+                          'dd/MM/yyyy',
+                        ).format(pickedDate);
+                      });
+                    }
+                  },
+                  validator:
+                      (value) =>
+                          _dataInicioReal == null
+                              ? '* Selecione uma data'
+                              : null,
+                ),
+                const SizedBox(height: 20),
+                SizedBox(
+                  width: double.infinity,
+                  child: CustomElevatedButton(
+                    onPressed: _salvar,
+                    label: 'Salvar',
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

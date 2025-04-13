@@ -26,7 +26,7 @@ class AppTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.buttonLight,
-        foregroundColor: AppColors.textDark,
+        foregroundColor: AppColors.textLight,
       ),
     ),
     cardTheme: CardTheme(
@@ -38,6 +38,7 @@ class AppTheme {
       filled: true,
       fillColor: AppColors.cardLight,
       labelStyle: TextStyle(color: AppColors.textLight),
+      floatingLabelStyle: TextStyle(color: AppColors.textLight),
       hintStyle: TextStyle(color: AppColors.textLight),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
@@ -88,9 +89,8 @@ class AppTheme {
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      fillColor: AppColors.cardDark,
       labelStyle: TextStyle(color: AppColors.textDark),
-      hintStyle: TextStyle(color: AppColors.textDark),
+      floatingLabelStyle: TextStyle(color: AppColors.textDark),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
         borderSide: BorderSide.none,
