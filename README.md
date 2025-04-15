@@ -1,4 +1,4 @@
-# 📚 Catálogo de Cursos com Cadastro de Interesse  
+# 📚 Catálogo de Cursos  
 
 ## ✅ Funcionalidades a serem implementadas  
 
