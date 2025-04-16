@@ -1,6 +1,8 @@
 import 'package:app_seminario/core/theme_provider.dart';
 import 'package:app_seminario/core/themes.dart';
+import 'package:app_seminario/modules/configuracoes/configuracoes_screen.dart';
 import 'package:app_seminario/modules/home/home_screen.dart';
+import 'package:app_seminario/modules/meu_perfil/meu_perfil_screen.dart';
 import 'package:app_seminario/modules/personalizacao/personalizacao_screen.dart';
 import 'package:app_seminario/widgets/custom_app_bar.dart';
 import 'package:app_seminario/widgets/custom_bottom_navigation.dart';
@@ -22,8 +24,8 @@ class MyApp extends StatelessWidget {
       themeMode: themeProvider.themeMode,
       initialRoute: '/',
       routes: {
-        //'/configuracoes': (context) => const ConfiguracoesScreen(),
-        //'/perfil': (context) => const MeuPerfilScreen(),
+        '/configuracoes': (context) => ConfiguracoesScreen(),
+        '/meu-perfil': (context) =>  MeuPerfilScreen(),
         '/personalizacao': (context) => const PersonalizacaoScreen(),
       },
       theme: themeProvider.lightTheme,

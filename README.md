@@ -1,4 +1,4 @@
-# 📚 Catálogo de Cursos com Cadastro de Interesse  
+# 📚 Catálogo de Cursos  
 
 ## ✅ Funcionalidades a serem implementadas  
 
@@ -76,8 +76,8 @@ Siga as etapas abaixo para configurar e executar o aplicativo em seu ambiente lo
 
 1. **Clone o Repositório**  
     ```bash  
-    git clone https://github.com/seu-usuario/seu-repositorio.git  
-    cd seu-repositorio  
+    git clone https://github.com/FelipeMoraisOC/app_seminario_dm.git  
+    cd app_seminario_dm  
     ```  
 
 2. **Instale as Dependências**  
