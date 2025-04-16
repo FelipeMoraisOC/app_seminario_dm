@@ -12,7 +12,7 @@ class ThemeProvider extends ChangeNotifier {
   bool get isDarkMode => _themeMode == ThemeMode.dark;
   Color get primaryColor => _customPrimaryColor;
   Color get scaffoldBackgroundColor =>
-      Color.lerp(_customPrimaryColor, Colors.white, 0.98)!;
+      Color.lerp(_customPrimaryColor, Colors.white, 0.96)!;
   String get font => _customFont;
 
   void toggleTheme(bool isOn) {

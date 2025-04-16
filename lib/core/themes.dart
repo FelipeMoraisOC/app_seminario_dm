@@ -30,7 +30,7 @@ class AppTheme {
       ),
     ),
     cardTheme: CardTheme(
-      color: AppColors.cardLight,
+      color: Colors.white,
       shadowColor: AppColors.backgroundDark,
       elevation: 4,
     ),

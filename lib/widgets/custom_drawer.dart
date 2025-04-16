@@ -106,6 +106,45 @@ class CustomDrawer extends StatelessWidget {
                       Navigator.pushNamed(context, '/personalizacao');
                     },
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 8),
+                    child: Text(
+                      'Exemplos: ',
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8, right: 8),
+                    child: const Divider(thickness: 1),
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.grid_on_outlined),
+                    title: Text('GridView.Builder'),
+                    subtitle: Text(
+                      '/gridview-builder',
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/gridview-builder');
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.view_comfy_alt_outlined),
+                    title: Text('GridView.Extend'),
+                    subtitle: Text(
+                      '/gridview-extend',
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/gridview-extend');
+                    },
+                  ),
                 ],
               ),
             ),

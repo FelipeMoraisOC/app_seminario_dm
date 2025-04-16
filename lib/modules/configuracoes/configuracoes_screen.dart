@@ -10,15 +10,14 @@ class _ConfiguracoesScreenState extends State<ConfiguracoesScreen> {
   String? _selectedOption;
   String? _selectedOptionRadio;
   double _selectedSlider = 0.0;
-  bool _isCheckedCheckBox = false;
+  bool _isCheckedCheckBox = true;
   bool _isChecked = false;
+  final TextEditingController senhaController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Configurações'),
-      ),
+      appBar: AppBar(title: Text('Configurações')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -52,12 +51,15 @@ class _ConfiguracoesScreenState extends State<ConfiguracoesScreen> {
                   border: OutlineInputBorder(),
                 ),
                 value: _selectedOption,
-                items: ['Opção 1', 'Opção 2', 'Opção 3']
-                    .map((option) => DropdownMenuItem(
-                          value: option,
-                          child: Text(option),
-                        ))
-                    .toList(),
+                items:
+                    ['Opção 1', 'Opção 2', 'Opção 3']
+                        .map(
+                          (option) => DropdownMenuItem(
+                            value: option,
+                            child: Text(option),
+                          ),
+                        )
+                        .toList(),
                 onChanged: (value) {
                   setState(() {
                     _selectedOption = value;
@@ -75,106 +77,128 @@ class _ConfiguracoesScreenState extends State<ConfiguracoesScreen> {
                   });
                 },
               ),
-                // Radio buttons
-                Column(
+              // Radio buttons
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Escolha uma opção:'),
                   ListTile(
-                  title: Text('Opção A'),
-                  leading: Radio<String>(
-                    value: 'A',
-                    groupValue: _selectedOptionRadio,
-                    onChanged: (value) {
-                    setState(() {
-                      _selectedOptionRadio = value;
-                    });
-                    },
-                  ),
+                    title: Text('Opção A'),
+                    leading: Radio<String>(
+                      value: 'A',
+                      groupValue: _selectedOptionRadio,
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedOptionRadio = value;
+                        });
+                      },
+                    ),
                   ),
                   ListTile(
-                  title: Text('Opção B'),
-                  leading: Radio<String>(
-                    value: 'B',
-                    groupValue: _selectedOptionRadio,
-                    onChanged: (value) {
-                    setState(() {
-                      _selectedOptionRadio = value;
-                    });
-                    },
-                  ),
+                    title: Text('Opção B'),
+                    leading: Radio<String>(
+                      value: 'B',
+                      groupValue: _selectedOptionRadio,
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedOptionRadio = value;
+                        });
+                      },
+                    ),
                   ),
                 ],
-                ),
-                SizedBox(height: 16),
+              ),
+              SizedBox(height: 16),
 
-                // Switch
-                SwitchListTile(
+              // Switch
+              SwitchListTile(
                 title: Text('Ativar Configuração'),
                 value: _isChecked,
                 onChanged: (value) {
                   setState(() {
-                  _isChecked = value;
+                    _isChecked = value;
                   });
                 },
-                ),
-                SizedBox(height: 16),
+              ),
+              SizedBox(height: 16),
 
-                // Slider
-                Column(
+              // Slider
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Ajuste o valor:'),
                   Slider(
-                  value: _selectedSlider,
-                  min: 0,
-                  max: 100,
-                  divisions: 10,
-                  label: _selectedSlider.round().toString(),
-                  onChanged: (value) {
-                    setState(() {
-                      _selectedSlider = value;
-                    });
-                  },
+                    value: _selectedSlider,
+                    min: 0,
+                    max: 100,
+                    divisions: 10,
+                    label: _selectedSlider.round().toString(),
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedSlider = value;
+                      });
+                    },
                   ),
                 ],
-                ),
-                SizedBox(height: 16),
-                // Date Picker
-                ElevatedButton(
+              ),
+              SizedBox(height: 16),
+              // Date Picker
+              ElevatedButton(
                 onPressed: () async {
                   DateTime? pickedDate = await showDatePicker(
-                  context: context,
-                  initialDate: DateTime.now(),
-                  firstDate: DateTime(2000),
-                  lastDate: DateTime(2100),
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2100),
                   );
                   if (pickedDate != null) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Data selecionada: $pickedDate')),
-                  );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Data selecionada: $pickedDate')),
+                    );
                   }
                 },
                 child: Text('Selecionar Data'),
-                ),
-                SizedBox(height: 16),
-
-                // Time Picker
-                ElevatedButton(
+              ),
+              SizedBox(height: 16),
+              ElevatedButton(
                 onPressed: () async {
                   TimeOfDay? pickedTime = await showTimePicker(
-                  context: context,
-                  initialTime: TimeOfDay.now(),
+                    context: context,
+                    initialTime: TimeOfDay.now(),
                   );
                   if (pickedTime != null) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Hora selecionada: $pickedTime')),
-                  );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Hora selecionada: $pickedTime')),
+                    );
                   }
                 },
                 child: Text('Selecionar Hora'),
-                ),
-                SizedBox(height: 16),
+              ),
+              SizedBox(height: 16),
+              TextFormField(
+                controller: senhaController,
+                decoration: InputDecoration(labelText: 'Senha'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return '* insira sua senha';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 16),
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Confirmar senha'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return '* confirme sua senha';
+                  } else if (value != senhaController.text) {
+                    return '* as senhas não coincidem';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 16),
+              // Time Picker
               // ElevatedButton to submit
               SizedBox(height: 16),
               ElevatedButton(

@@ -65,4 +65,7 @@ flutter:
     - assets/images/curso_dart.jpg
     - assets/images/curso_flutter.jpg
     - assets/images/curso.png
+    - assets/images/img_grande.png
+    - assets/images/img_pequena.png
+    - assets/images/img_media.jpg
 
