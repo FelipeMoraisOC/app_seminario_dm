@@ -90,13 +90,14 @@ class _AdicionarCursoState extends State<AdicionarCurso> {
                   controller: senhaController,
                   decoration: const InputDecoration(labelText: 'Senha'),
                   obscureText: true,
-                  validator:
-                      (value) =>
-                          value == null || value.isEmpty
-                              ? '* Digite uma senha'
-                              : value.length < 6
-                              ? '* Senha muito curta'
-                              : null,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return '* Digite uma senha';
+                    } else if (value.length < 6) {
+                      return '* Senha muito curta';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 20),
                 TextFormField(

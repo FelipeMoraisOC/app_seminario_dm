@@ -11,6 +11,8 @@ class ThemeProvider extends ChangeNotifier {
   ThemeMode get themeMode => _themeMode;
   bool get isDarkMode => _themeMode == ThemeMode.dark;
   Color get primaryColor => _customPrimaryColor;
+  Color get scaffoldBackgroundColor =>
+      Color.lerp(_customPrimaryColor, Colors.white, 0.98)!;
   String get font => _customFont;
 
   void toggleTheme(bool isOn) {
@@ -35,6 +37,12 @@ class ThemeProvider extends ChangeNotifier {
     appBarTheme: AppTheme.lightTheme.appBarTheme.copyWith(
       backgroundColor: _customPrimaryColor,
     ),
+    scaffoldBackgroundColor: scaffoldBackgroundColor,
+    bottomNavigationBarTheme: AppTheme.lightTheme.bottomNavigationBarTheme
+        .copyWith(backgroundColor: scaffoldBackgroundColor),
+    drawerTheme: AppTheme.lightTheme.drawerTheme.copyWith(
+      backgroundColor: _customPrimaryColor,
+    ),
     textTheme: GoogleFonts.getTextTheme(
       _customFont,
       AppTheme.lightTheme.textTheme,
@@ -44,9 +52,6 @@ class ThemeProvider extends ChangeNotifier {
         backgroundColor: _customPrimaryColor,
         foregroundColor: AppColors.textDark,
       ),
-    ),
-    drawerTheme: AppTheme.lightTheme.drawerTheme.copyWith(
-      backgroundColor: _customPrimaryColor,
     ),
     inputDecorationTheme: AppTheme.lightTheme.inputDecorationTheme.copyWith(
       fillColor: _customPrimaryColor.withAlpha(95),
