@@ -74,7 +74,7 @@ class CustomDrawer extends StatelessWidget {
                       ),
                     ),
                     onTap: () {
-                      // Handle Meu Perfil tap
+                      Navigator.pushNamed(context, '/meu-perfil');
                     },
                   ),
                   ListTile(
@@ -87,7 +87,7 @@ class CustomDrawer extends StatelessWidget {
                       ),
                     ),
                     onTap: () {
-                      // Handle Configurações tap
+                      Navigator.pushNamed(context, '/configuracoes');
                     },
                   ),
                   ListTile(
