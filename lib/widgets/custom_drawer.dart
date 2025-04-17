@@ -120,6 +120,19 @@ class CustomDrawer extends StatelessWidget {
                     child: const Divider(thickness: 1),
                   ),
                   ListTile(
+                    leading: const Icon(Icons.view_comfy_alt_outlined),
+                    title: Text('Login'),
+                    subtitle: Text(
+                      '/login',
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/login');
+                    },
+                  ),
+                  ListTile(
                     leading: const Icon(Icons.grid_on_outlined),
                     title: Text('GridView.Builder'),
                     subtitle: Text(

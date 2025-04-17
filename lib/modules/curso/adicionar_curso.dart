@@ -88,6 +88,7 @@ class _AdicionarCursoState extends State<AdicionarCurso> {
                 const SizedBox(height: 20),
                 TextFormField(
                   controller: senhaController,
+                  autovalidateMode: AutovalidateMode.onUnfocus,
                   decoration: const InputDecoration(labelText: 'Senha'),
                   obscureText: true,
                   validator: (value) {

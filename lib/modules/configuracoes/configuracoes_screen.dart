@@ -175,6 +175,7 @@ class _ConfiguracoesScreenState extends State<ConfiguracoesScreen> {
                 child: Text('Selecionar Hora'),
               ),
               SizedBox(height: 16),
+
               TextFormField(
                 controller: senhaController,
                 decoration: InputDecoration(labelText: 'Senha'),
